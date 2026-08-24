@@ -1,0 +1,24 @@
+// Override or add CSS variables for your theme here
+
+:root {
+  --ds-header-logo-height: 40px;
+  --ds-banner-text-background: rgba(0, 0, 0, 0.45);
+  --ds-banner-background-gradient-width: 300px;
+  --ds-home-news-link-color: #{$green};
+  --ds-home-news-link-hover-color: #{darken($green, 15%)};
+  --ds-header-navbar-border-bottom-color: #{$green};
+
+  // Cor institucional do header e footer (IFBA)
+  --ds-header-bg: #266117;
+  --ds-footer-bg: #266117;
+  --ds-top-footer-bg: #266117;
+
+  // Links do navbar: brancos (normal) e pretos (hover)
+  --ds-navbar-link-color: #FFFFFF;
+  --ds-navbar-link-color-hover: #000000;
+
+  // Icones do header (busca e globo de idioma): brancos
+  --ds-header-icon-color: #FFFFFF;
+  --ds-header-icon-color-hover: #000000;
+}
+

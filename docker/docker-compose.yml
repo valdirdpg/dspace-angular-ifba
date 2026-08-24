@@ -1,0 +1,48 @@
+#
+# The contents of this file are subject to the license and copyright
+# detailed in the LICENSE and NOTICE files at the root of the source
+# tree and available online at
+#
+# http://www.dspace.org/license/
+#
+
+# Docker Compose for running the DSpace Angular UI for testing/development
+# Requires also running a REST API backend (either locally or remotely),
+# for example via 'docker-compose-rest.yml'
+version: '3.7'
+networks:
+  dspacenet:
+services:
+  dspace7-angular:
+    container_name: dspace7-angular
+    environment:
+      DSPACE_UI_SSL: 'false'
+      # DSPACE_UI_HOST is the bind address of the internal dev server.
+      # It MUST be 0.0.0.0 so the container listens on all interfaces and works
+      # behind a reverse proxy / when accessed by a DNS name. Do NOT put the
+      # public hostname here, otherwise the dev server only answers on that IP.
+      DSPACE_UI_HOST: '0.0.0.0'
+      DSPACE_UI_PORT: '3017'
+      DSPACE_UI_NAMESPACE: /
+      # DSPACE_REST_* must point to an address the END USER's browser can reach.
+      # Behind a reverse proxy with SSL this is the public https endpoint.
+      DSPACE_REST_SSL: 'false'
+      DSPACE_REST_HOST: 'localhost'
+      DSPACE_REST_PORT: '8080'
+      DSPACE_REST_NAMESPACE: '/server'
+      NODE_OPTIONS: '--max-old-space-size=8192'
+      TZ: 'America/Sao_Paulo'
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    networks:
+      dspacenet:
+    ports:
+    - published: 3017
+      target: 3017
+    stdin_open: true
+    tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      # PT_BR: Placeholder substituido pelo frontend_build.sh para o SSR resolver o dominio publico do REST.
+      # EN: Placeholder replaced by frontend_build.sh so the SSR can resolve the public REST domain.

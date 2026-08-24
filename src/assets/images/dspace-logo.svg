@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="460" height="120"
+     viewBox="0 0 400 120">
+
+  <!-- Fundo transparente -->
+  <rect x="0" y="0" width="450" height="120" fill="none"/>
+
+  <!-- Bloco geométrico à esquerda (grade de formas) -->
+  <!-- Ajuste de cores conforme necessário (ex.: #FFFFFF para branco) -->
+  <g transform="translate(20,20)">
+    
+    <rect x="75"  y="0"  width="20" height="20" fill="#FFFFFF"/>
+    <!-- Coluna 1 -->
+    <!-- <rect x="25"  y="0"  width="20" height="20" fill="#FFFFFF"/> -->
+    <circle cx="34" cy="10" r="11" fill="#FFFFFF"/>
+    <rect x="25"  y="25" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="25"  y="50" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="25"  y="75"  width="20" height="20" fill="#FFFFFF"/>
+
+    <!-- Coluna 2 -->
+    <rect x="50" y="0"  width="20" height="20" fill="#FFFFFF"/>
+    <rect x="50" y="25" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="50" y="50" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="50" y="75" width="20" height="20" fill="#FFFFFF"/>
+
+    <!-- Coluna 3 -->
+    <!--<rect x="50" y="0"  width="20" height="20" fill="#FFFFFF"/>-->
+    <rect x="75" y="50" width="20" height="20" fill="#FFFFFF"/>
+    <!--<rect x="50" y="50" width="20" height="20" fill="#FFFFFF"/>-->
+  </g>
+
+  <!-- Texto à direita -->
+  <g transform="translate(122,40)">
+    <text x="0" y="25"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="16"
+          fill="#FFFFFF"
+          font-weight="bold">
+      INSTITUTO FEDERAL 
+    </text>
+    <text x="0" y="46"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="16"
+          fill="#FFFFFF"
+          font-weight="bold">
+      DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA
+    </text>
+    <text x="0" y="71"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="16"
+          fill="#FFFFFF"
+          font-weight="">
+           Bahia
+    </text>
+  </g>
+</svg>
