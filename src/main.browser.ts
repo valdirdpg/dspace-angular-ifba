@@ -38,12 +38,18 @@ const main = () => {
         // extend environment with app config for browser when not prerendered
         extendEnvironmentWithAppConfig(environment, appConfig);
         return bootstrap();
+      })
+      .catch(() => {
+        // IFBA: se o fetch do config.json falhar, ainda assim inicializa a app
+        // usando o baseUrl fixo do environment.ts (evita /api sem /server e tela branca).
+        return bootstrap();
       });
   }
 };
 
-// support async tag or hmr
-if (document.readyState === 'complete' && !hasTransferState) {
+// IFBA: garante que main() SEMPRE execute, mesmo se DOMContentLoaded ja tiver disparado
+// (scripts type="module" sao deferidos; em modo dev atras de proxy o listener podia nunca rodar).
+if (hasTransferState || document.readyState !== 'loading') {
   main();
 } else {
   document.addEventListener('DOMContentLoaded', main);
