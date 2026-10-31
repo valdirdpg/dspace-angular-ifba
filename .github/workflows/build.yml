@@ -7,7 +7,7 @@ name: Build
 on: [push, pull_request]
 
 permissions:
-  contents: read  #  to fetch code (actions/checkout)
+  contents: read  # to fetch code (actions/checkout)
 
 jobs:
   tests:
@@ -43,11 +43,11 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # https://github.com/actions/setup-node
       - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -72,7 +72,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
       - name: Cache Yarn dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           # Cache entire Yarn cache directory (see previous step)
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -99,7 +99,7 @@ jobs:
       # so that it can be shared with the 'codecov' job (see below)
       # NOTE: Angular CLI only supports code coverage for specs. See https://github.com/angular/angular-cli/issues/6286
       - name: Upload code coverage report to Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: matrix.node-version == '18.x'
         with:
           name: dspace-angular coverage report
@@ -133,19 +133,19 @@ jobs:
       # Cypress always creates a video of all e2e tests (whether they succeeded or failed)
       # Save those in an Artifact
       - name: Upload e2e test videos to Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: e2e-test-videos
+          name: e2e-test-videos-${{ matrix.node-version }}
           path: cypress/videos
 
       # If e2e tests fail, Cypress creates a screenshot of what happened
       # Save those in an Artifact
       - name: Upload e2e test failure screenshots to Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: e2e-test-screenshots
+          name: e2e-test-screenshots-${{ matrix.node-version }}
           path: cypress/screenshots
 
       - name: Stop app (in case it stays up after e2e tests)
@@ -191,11 +191,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Download artifacts from previous 'tests' job
       - name: Download coverage artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       # Now attempt upload to Codecov using its action.
       # NOTE: We use a retry action to retry the Codecov upload if it fails the first time.
