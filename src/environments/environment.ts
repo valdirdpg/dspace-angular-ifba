@@ -10,10 +10,10 @@ export const environment: Partial<BuildConfig> = {
   // quando o TransferState do SSR nao e injetado ou o fetch do config.json falha).
   rest: {
     ssl: true,
-    host: 'repositorio-teste.ifba.edu.br',
+    host: 'repositorio2.ifba.edu.br',
     port: 443,
     nameSpace: '/server',
-    baseUrl: 'https://repositorio-teste.ifba.edu.br/server',
+    baseUrl: 'https://repositorio2.ifba.edu.br/server',
   },
   universal: {
     preboot: true,

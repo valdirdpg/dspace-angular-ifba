@@ -1,5 +1,5 @@
 rest:
   ssl: true
-  host: repositorio-teste.ifba.edu.br
+  host: repositorio2.ifba.edu.br
   port: 443
   nameSpace: /server
